@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section>
+        <h1>Speed Converter</h1>
+        <p>Type a value in any of the fields to convert between speed measurements:</p>
+        <form>
+            <aside>
+                <label for="MPH">MPH</label><br/>
+                <input type="number" id="mph" placeholder="0" min="0" oninput="speedConverter(this.id,this.value)" onchange="speedConverter(this.id,this.value">
+            </aside>
+            <aside>
+                <label for="KPH">KPH</label><br/>
+                <input type="number" id="kph" placeholder="0.00" min="0" oninput="speedConverter(this.id,this.value)" onchange="speedConverter(this.id,this.value">
+            </aside>
+            <aside>
+                <label for="Knots">Knots</label><br/>
+                <input type="number" id="knots" placeholder="0" min="0" oninput="speedConverter(this.id,this.value)" onchange="speedConverter(this.id,this.value">
+            </aside>
+            <aside>
+                <label for="Mach">Mach</label><br/>
+                <input type="number" id="mach" placeholder="0.00" min="0" oninput="speedConverter(this.id,this.value)" onchange="speedConverter(this.id,this.value">
+            </aside>
+        </form>
+        <span id="mphh"></span>
+    </section>
+
+    <script>
+        function speedConverter(valId, valNum) {
+            if (valId === 'mph') {
+                document.getElementById('kph').value = (valNum * 1.609344).toFixed(2);
+                document.getElementById('knots').value = (valNum / 1.150779).toFixed(2);
+                document.getElementById('mach').value = (valNum / 761.207).toFixed(4);
+            } else if (valId === 'kph') {
+                document.getElementById('mph').value = (valNum / 1.609344).toFixed(2);
+                document.getElementById('knots').value = (valNum / 1.852).toFixed(2);
+                document.getElementById('mach').value = (valNum / 1225.044).toFixed(5);
+            } else if (valId === 'knots') {
+                document.getElementById('mph').value = (valNum * 1.150779).toFixed(2);
+                document.getElementById('kph').value = (valNum * 1.852).toFixed(2);
+                document.getElementById('mach').value = (valNum / 661.4708).toFixed(5);
+            } else if (valId === 'mach') {
+                document.getElementById('mph').value = (valNum * 761.207).toFixed(0);
+                document.getElementById('knots').value = (valNum * 661.4708).toFixed(0);
+                document.getElementById('kph').value = (valNum * 1225.044).toFixed(0);
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
